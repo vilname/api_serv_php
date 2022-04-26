@@ -1,0 +1,88 @@
+VideoGamePath:
+  get:
+    tags:
+      - Video Game
+    summary: Возвращает все игры
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                items:
+                  type: array
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Id игры
+                        example: 1
+                      name:
+                        type: string
+                        description: Название игры
+                        example: 'cs'
+                      developer:
+                        type: string
+                        description: Разработчик
+                        example: 'test_dev'
+                      genre_id:
+                        type: int
+                        description: Id жанра игры
+                        example: 1
+                status_code:
+                  type: string
+                  example: 'success'
+  post:
+    tags:
+      - Video Game
+    summary: Создание новой игры
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../schemas/video_game_schema.yaml'
+    responses:
+      '200':
+        $ref: "../responses/success_response.yaml"
+
+VideoGameWithID:
+  put:
+    tags:
+      - Video Game
+    summary: Изменение игры
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+          example: "1"
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            $ref: '../schemas/video_game_schema.yaml'
+    responses:
+      '200':
+        $ref : "../responses/success_response.yaml"
+
+  delete:
+    tags:
+      - Video Game
+    summary: Удаление игры
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+          example: "1"
+    responses:
+      '200':
+        $ref: "../responses/success_response.yaml"

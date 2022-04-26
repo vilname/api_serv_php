@@ -1,0 +1,26 @@
+openapi: 3.0.0
+info:
+  title: API documentation
+  version: 1.0.0
+servers:
+  - url: http://localhost:7777/api
+tags:
+  - name: Video Game
+  - name: Genre
+paths:
+  /video_game:
+    $ref: './resources/video_game.yaml#/VideoGamePath'
+  /video_game/{id}:
+    $ref: './resources/video_game.yaml#/VideoGameWithID'
+  /genre:
+    $ref: './resources/genre.yaml#/GenrePath'
+
+components:
+  schemas:
+    Item:
+      $ref: './schemas/item_schema.yaml'
+#  securitySchemes:
+#    bearerAuth:
+#      type: http
+#      scheme: bearer
+

@@ -1,0 +1,26 @@
+GenrePath:
+  get:
+    tags:
+      - Genre
+    summary: Получение всех жанров
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    properties:
+                      id:
+                        type: integer
+                        description: Токен пользователя
+                      token:
+                        type: string
+                        description: Токен пользователя
+                status_code:
+                  type: string
+                  example: 'success'
